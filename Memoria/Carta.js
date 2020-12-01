@@ -21,6 +21,12 @@ class Carta {
             image(this.imagen,this.x,this.y,this.ancho,this.alto);
         }
 
+        /*if(!this.completado){
+            fill(255);
+            imageMode(CENTER);        
+            image(this.imagen,this.x,this.y,this.ancho,this.alto);
+        }*/
+
     }
 
     validar(dx, dy) {
@@ -41,5 +47,12 @@ class Carta {
     setMostrar(mostrar){
         this.mostrar = mostrar;
     }
+     
+    getTipo (){
+        return this.tipo;
+    }
 
+    setCompletado(completado) {
+        this.completado = completado;
+    }
 }

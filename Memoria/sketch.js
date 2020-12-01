@@ -56,8 +56,31 @@ function mousePressed () {
      } else if (cartas[i] !== carta1 && carta2 == null) {
        carta2 = cartas[i];
        cartas[i].setMostrar(true);
+
        return true;
      }
    }
+  }
+  function validarCartas (){
+      if(carta1 !== null && carta2 !== null) {
+        if (carta1.getTipo()== carta2.getTipo()){
+          completaSet();
+        } else {
+          resetSet();
+        }
+      }
+    }
+    
+  function completaSet() {
+    //carta1.setCompletado(true);
+    //carta2.setCompletado(true);
+    
+    this.carta1 = null;
+    this.carta2 = null;
+  }
+
+  function resetSet() {
+    this.carta1 = null;
+    this.carta2 = null;
   }
 }
