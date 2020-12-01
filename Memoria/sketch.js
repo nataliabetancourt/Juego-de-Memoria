@@ -1,9 +1,5 @@
-let abierto;
-let click;
-let tarjeta;
-let cartas = [];
-let images = [];
-let control = false;
+let carta1;               let carta2;
+let cartas = [];          let images = [];
 
 function preload() {
   let indicator = 1;    
@@ -35,9 +31,8 @@ function restart () {
 
 function setup() {
   createCanvas(320, 675); 
-  this.click = false;
-  this.abierto = false;
-  this.indice = 0;
+  this.carta1 = null;
+  this.carta2 = null;
   restart();
 }
 
@@ -52,9 +47,17 @@ function draw() {
 
 function mousePressed () {
   for (let i = 0; i < cartas.length; i++) {
-    if(mouseX>cartas[i].getX()-30 && mouseX<cartas[i].getX()+30 && mouseY>cartas[i].getX()-30 && mouseY<cartas[i].getY()){
-      click = true;
-      abierto = true;
-    }
+   cartas[i].validar(mouseX, mouseY);
+   if(cartas[i].validar(mouseX, mouseY)) {
+     if(carta1 == null) {
+       carta1 = cartas[i];
+       cartas[i].setMostrar(true);
+       return true;
+     } else if (cartas[i] !== carta1 && carta2 == null) {
+       carta2 = cartas[i];
+       cartas[i].setMostrar(true);
+       return true;
+     }
+   }
   }
 }
